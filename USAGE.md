@@ -16,7 +16,7 @@ export AZURE_OPENAI_ENDPOINT=<YOUR_AZURE_OPENAI_ENDPOINT>
 export AZURE_OPENAI_KEY=<YOUR_AZURE_OPENAI_KEY>
 ```
 
-- AZURE_OPENAI_ENDPOINT: https://から.openai.azure.com/までの部分を指定してください。
+- AZURE_OPENAI_ENDPOINT: `https://`から`.openai.azure.com/`までの部分を指定してください。
 
 ## モデルの評価
 llm-jpモデルを評価するには、configs/config.yamlファイル内の以下の項目を変更します。
