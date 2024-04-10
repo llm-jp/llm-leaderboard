@@ -19,7 +19,7 @@ export AZURE_OPENAI_KEY=<YOUR_AZURE_OPENAI_KEY>
 - AZURE_OPENAI_ENDPOINT: `https://`から`.openai.azure.com/`までの部分を指定してください。
 
 ## モデルの評価
-llm-jpモデルを評価するには、configs/config.yamlファイル内の以下の項目を変更します。
+llm-jpモデルを評価するには、configs/llm-jp-config.yaml ファイル内の以下の項目を変更します。
 ただし、chat templateを変えて指示チューニングを行った場合適切に設定をする必要があります。
 
 - `pretrained_model_name_or_path`: 使用する事前訓練済みモデルのパス
