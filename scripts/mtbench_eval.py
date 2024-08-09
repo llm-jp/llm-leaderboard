@@ -1,11 +1,6 @@
 import datetime
 import hashlib
-import json
-import numpy as np
 import pandas as pd
-from io import StringIO
-import google.generativeai as genai
-from tqdm import tqdm
 import wandb
 from fastchat.llm_judge.gen_model_answer import run_eval
 from fastchat.llm_judge.gen_api_answer import get_api_answer
@@ -22,7 +17,7 @@ from fastchat.llm_judge.common import (
 from config_singleton import WandbConfigSingleton
 from fastchat.conversation import initialize_custom_template
 from fastchat.utils import str_to_torch_dtype
-from omegaconf import OmegaConf
+
 
 def mtbench_evaluate():
     # Retrieve the instance from WandbConfigSingleton and load the W&B run and configuration
@@ -288,7 +283,5 @@ def mtbench_evaluate():
         #"leaderboard_table":instance.table
     })
 
-    
-    #run.finish()
+    # run.finish()
     return
-
