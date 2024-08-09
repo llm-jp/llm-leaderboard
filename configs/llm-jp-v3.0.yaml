@@ -74,7 +74,7 @@ mtbench:
   model_id: null # cannot use '<', '>', ':', '"', '/', '\\', '|', '?', '*', '.'
   question_begin: null 
   question_end: null 
-  max_new_token: 1536
+  max_new_token: 1024
   num_choices: 1
   num_gpus_per_model: 8
   num_gpus_total: 8
