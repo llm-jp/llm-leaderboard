@@ -15,7 +15,7 @@ api: false
 model:
   use_wandb_artifacts: false
   artifacts_path: ""
-  pretrained_model_name_or_path: '/model/taishi/checkpoint/13Bv2-full-dolly_ja-dolly_en-ichikara_004_001_single-oasst_en-oasst_ja-oasst2_en-oasst2_ja-checkpoint-800/' #if you use openai api, put the name of model
+  pretrained_model_name_or_path: "/model/taishi/checkpoint/13Bv2-full-dolly_ja-dolly_en-ichikara_004_001_single-oasst_en-oasst_ja-oasst2_en-oasst2_ja-checkpoint-800/" #if you use openai api, put the name of model
   trust_remote_code: true
   device_map: "auto"
   load_in_8bit: false
@@ -30,7 +30,7 @@ generator:
 tokenizer:
   use_wandb_artifacts: false
   artifacts_path: ""
-  pretrained_model_name_or_path: '/model/taishi/checkpoint/13Bv2-full-dolly_ja-dolly_en-ichikara_004_001_single-oasst_en-oasst_ja-oasst2_en-oasst2_ja-checkpoint-800/' 
+  pretrained_model_name_or_path: "/model/taishi/checkpoint/13Bv2-full-dolly_ja-dolly_en-ichikara_004_001_single-oasst_en-oasst_ja-oasst2_en-oasst2_ja-checkpoint-800/"
   use_fast: true
 
 # for llm-jp-eval
@@ -67,35 +67,36 @@ metainfo:
 
 # for mtbench
 mtbench:
-  question_artifacts_path: 'wandb-japan/llm-leaderboard/mtbench_ja_question:v0' # if testmode is true, small dataset will be used
-  referenceanswer_artifacts_path: 'wandb-japan/llm-leaderboard/mtbench_ja_referenceanswer:v0' # if testmode is true, small dataset will be used
-  judge_prompt_artifacts_path: 'wandb-japan/llm-leaderboard/mtbench_ja_prompt:v1' 
-  bench_name: 'japanese_mt_bench'
+  question_artifacts_path: "wandb-japan/llm-leaderboard/mtbench_ja_question:v0" # if testmode is true, small dataset will be used
+  referenceanswer_artifacts_path: "wandb-japan/llm-leaderboard/mtbench_ja_referenceanswer:v0" # if testmode is true, small dataset will be used
+  judge_prompt_artifacts_path: "wandb-japan/llm-leaderboard/mtbench_ja_prompt:v1"
+  bench_name: "japanese_mt_bench"
   model_id: null # cannot use '<', '>', ':', '"', '/', '\\', '|', '?', '*', '.'
   question_begin: null 
   question_end: null 
   max_new_token: 1024
   num_choices: 1
-  num_gpus_per_model: 1
-  num_gpus_total: 1
+  num_gpus_per_model: 8
+  num_gpus_total: 8
   max_gpu_memory: null
   dtype: bfloat16 # None or float32 or float16 or bfloat16
   # for gen_judgment
-  judge_model: 'gpt-4'
-  mode: 'single'
-  baseline_model: null 
+  judge_model: "gpt-4"
+  mode: "single"
+  baseline_model: null
   parallel: 1
   first_n: null
   # for conv template # added
   custom_conv_template: true
   # the following variables will be used when custom_conv_template is set as true
   conv_name: "custom"
+  conv_start_token: ""
   conv_system_message: "以下は、タスクを説明する指示です。要求を適切に満たす応答を書きなさい。"
   conv_roles: ('指示', '応答')
-  conv_sep: '\n\n### '
-  conv_sep2: '<EOD|LLM-jp>'
-  conv_stop_token_ids: '[7]'
-  conv_stop_str: '<EOD|LLM-jp>'
+  conv_sep: "\n\n### "
+  conv_sep2: "<EOD|LLM-jp>"
+  conv_stop_token_ids: "[7]"
+  conv_stop_str: "<EOD|LLM-jp>"
   conv_role_only_separator: ":\n"
   conv_role_message_separator: ":\n"
   use_azure: true

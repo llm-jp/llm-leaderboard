@@ -1,19 +1,27 @@
+from argparse import ArgumentParser
 import wandb
-from wandb.sdk.wandb_run import Run
+# from wandb.sdk.wandb_run import Run
 import os
 import sys
 from omegaconf import DictConfig, OmegaConf
 import pandas as pd
-sys.path.append('llm-jp-eval/src') 
+# sys.path.append('llm-jp-eval/src')
 sys.path.append('FastChat')
-from llm_jp_eval.evaluator import evaluate
+# from llm_jp_eval.evaluator import evaluate
 from mtbench_eval import mtbench_evaluate
 from config_singleton import WandbConfigSingleton
 from cleanup import cleanup_gpu
 
+
+# Argument parsing
+parser = ArgumentParser()
+parser.add_argument("-c", "--config-path", type=str, default="configs/llm-jp-v3.0.yaml", help="Path to the configuration file")
+args = parser.parse_args()
+
+
 # Configuration loading
-if os.path.exists("configs/config.yaml"):
-    cfg = OmegaConf.load("configs/config.yaml")
+if os.path.exists(args.config_path):
+    cfg = OmegaConf.load(args.config_path)
     cfg_dict = OmegaConf.to_container(cfg, resolve=True)
     assert isinstance(cfg_dict, dict)
 else:
@@ -42,8 +50,8 @@ cfg = WandbConfigSingleton.get_instance().config
 
 # Save configuration as artifact
 if cfg.wandb.log:
-    if os.path.exists("configs/config.yaml"):
-        artifact_config_path = "configs/config.yaml"
+    if os.path.exists(args.config_path):
+        artifact_config_path = args.config_path
     else:
         # If "configs/config.yaml" does not exist, write the contents of run.config as a YAML configuration string
         instance = WandbConfigSingleton.get_instance()
